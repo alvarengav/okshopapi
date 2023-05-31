@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -22,13 +24,29 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // this is just for test.
+        $currentDate = Carbon::now();
+
         DB::table('users')->insert([
             'name' => 'Administrator',
             'username' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
             'rolType' => 'Administrator',
+            'created_at' => $currentDate,
+            'updated_at' => $currentDate,
         ]);
+
+        DB::table('password_manager')->insert([
+            'social_name' => 'Facebook',
+            'url' => 'htps://facebook.com/okshop',
+            'username' => 'okshop',
+            'password' => Crypt::encryptString('password'),
+            'user_id' => 1,
+            'created_at' => $currentDate,
+            'updated_at' => $currentDate,
+        ]);
+
+
         $this->call([
             ProductSeeder::class
         ]);
