@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         // this is just for test.
         $currentDate = Carbon::now();
 
-        DB::table('users')->insert([
+        $user_id = DB::table('users')->insert([
             'name' => 'Administrator',
             'username' => 'admin',
             'email' => 'admin@gmail.com',
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
             'url' => 'htps://facebook.com/okshop',
             'username' => 'okshop',
             'password' => Crypt::encryptString('password'),
-            'user_id' => 1,
+            'user_id' => $user_id,
             'created_at' => $currentDate,
             'updated_at' => $currentDate,
         ]);
