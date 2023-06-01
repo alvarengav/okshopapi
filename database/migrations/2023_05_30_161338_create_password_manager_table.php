@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('social_network_name');
             $table->string('url');
             $table->string('username');
-            $table->string('password');
+            $table->longText('password');
             $table->timestamps();
 
             $table->foreignId('user_id')->constrained();
