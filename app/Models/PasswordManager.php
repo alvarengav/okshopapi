@@ -10,4 +10,6 @@ class PasswordManager extends Model
     use HasFactory;
 
     protected $table = 'password_manager';
+
+    protected $guarded = [];
 }

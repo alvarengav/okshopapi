@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('password_manager')->insert([
-            'social_name' => 'Facebook',
+            'social_network_name' => 'Facebook',
             'url' => 'htps://facebook.com/okshop',
             'username' => 'okshop',
             'password' => Crypt::encryptString('password'),

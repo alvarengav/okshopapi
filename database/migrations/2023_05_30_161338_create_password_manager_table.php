@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('password_manager', function (Blueprint $table) {
             $table->id();
-            $table->string('social_name');
+            $table->string('social_network_name');
             $table->string('url');
             $table->string('username');
             $table->string('password');
