@@ -36,15 +36,15 @@ class DatabaseSeeder extends Seeder
             'updated_at' => $currentDate,
         ]);
 
-        DB::table('password_manager')->insert([
-            'social_network_name' => 'Facebook',
-            'url' => 'htps://facebook.com/okshop',
-            'username' => 'okshop',
-            'password' => Crypt::encryptString('password'),
-            'user_id' => $user_id,
-            'created_at' => $currentDate,
-            'updated_at' => $currentDate,
-        ]);
+        // DB::table('password_manager')->insert([
+        //     'social_network_name' => 'Facebook',
+        //     'url' => 'htps://facebook.com/okshop',
+        //     'username' => 'okshop',
+        //     'password' => Crypt::encryptString('password'),
+        //     'user_id' => $user_id,
+        //     'created_at' => $currentDate,
+        //     'updated_at' => $currentDate,
+        // ]);
 
 
         $this->call([
