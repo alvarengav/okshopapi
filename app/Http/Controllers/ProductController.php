@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -57,8 +62,11 @@ class ProductController extends Controller
             return response()->json(['error' => 'Invalid image'], 400);
         }
 
-        $path = $image->storeAs('product_images', $image->getClientOriginalName(), 'public');
-        $url = asset('storage/' . $path);
+        $image->move(base_path('/public_html/images/products/'), $image->getClientOriginalName());
+        $url = url('/images/products/' . $image->getClientOriginalName());
+        //$path = $image->storeAs('product_images', $image->getClientOriginalName(), 'public');
+        // $image->move(base_path(''))
+        // // $url = asset('storage/' . $path);
         $product->image_url = $url;
         $product->update();
         return response()->json(['message' => 'Image uploaded successfully'], 200);
