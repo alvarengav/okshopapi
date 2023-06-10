@@ -62,14 +62,8 @@ class ProductController extends Controller
             return response()->json(['error' => 'Invalid image'], 400);
         }
 
-        //$path = $image->storeAs('product_images', $image->getClientOriginalName(), 'public');
-        // $image->move(base_path(''))
-        // // $url = asset('storage/' . $path);
-
-        // This is to work on webhost
-        $image->move(base_path('/public_html/images/products/'), $image->getClientOriginalName());
-        $url = url('/images/products/' . $image->getClientOriginalName());
-        $product->image_url = $url;
+        $path = $image->storeAs('product_images', $image->getClientOriginalName(), 'public');
+        $product->image_url = $path;
         $product->update();
         return response()->json(['message' => 'Image uploaded successfully'], 200);
     }
